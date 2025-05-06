@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inclusão Digital | Acessibilidade para PCDs</title>
+    <title>InovaPCD | Acessibilidade para PCDs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <style>
@@ -93,8 +93,8 @@
         }
         
         .logo img {
-            width: 50px;
-            height: 50px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             border: 2px solid var(--accent);
         }
@@ -220,7 +220,7 @@
         }
 
         .section-title {
-            text-align: center;
+            text-align:center;
             margin-bottom: 50px;
         }
 
@@ -239,42 +239,177 @@
             max-width: 700px;
             margin: 0 auto;
         }
+        .missao-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .missao-lista {
+        list-style-type: none;
+        padding-left: 0;
+        line-height: 1.8;
+    }
+
+    .missao-lista li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 10px;
+    }
+
+    .missao-lista span:first-child {
+        margin-right: 10px;
+    }
+
+    .missao-lista strong {
+        color: #2C7BE5;
+    }
 
         /* Cards de Serviços */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        
+        .services-section {
+    padding: 60px 20px;
+    background: #f9f9f9;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-        .service-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(255, 123, 37, 0.2);
-        }
+.section-header h2 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
 
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
+.section-header h2 span {
+    color: #2C7BE5;
+}
 
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text);
-        }
+.section-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
 
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.service-card.featured {
+    border-top: 4px solid #2C7BE5;
+}
+
+.card-icon {
+    font-size: 2.2rem;
+    color: #2C7BE5;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.service-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.categories-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.category-tag {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.highlights-box {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 15px 0;
+}
+
+.highlights-box p {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.highlights-box i {
+    color: #4CAF50;
+}
+
+.card-button {
+    display: inline-block;
+    background: #f0f4f8;
+    color: #2C7BE5;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.card-button:hover {
+    background: #2C7BE5;
+    color: white;
+}
+
+.card-button.primary {
+    background: #2C7BE5;
+    color: white;
+}
+
+.card-button.primary:hover {
+    background: #1a5bbf;
+}
+
+@media (max-width: 768px) {
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+}
         /* Depoimentos */
         .testimonials {
             background-color: var(--accessibility-bg);
@@ -588,19 +723,23 @@
     <header>
         <nav>
             <a href="#" class="logo">
-                <img src="https://via.placeholder.com/50" alt="Logo Inclusão Digital">
+                <img src="/Project startup/img/LOGO.jpg" alt="Logo InovaPCD">
                 <div class="logo-text">
-                    <h1>Inclusão Digital</h1>
-                    <span>Acessibilidade para todos</span>
+                    <h1>InovaPCD</h1>
+                    <span>Capacita, Inclui e Transforma</span>
                 </div>
             </a>
             
             <ul class="nav-links">
-                <li><a href="#home" class="active">Início</a></li>
+                <li><a href="#about">Nossa história</a></li>
                 <li><a href="#services">Serviços</a></li>
-                <li><a href="#registration">Inscrição</a></li>
                 <li><a href="#testimonials">Depoimentos</a></li>
                 <li><a href="#contact">Contato</a></li>
+                <li>
+                    <a href="#formulario-inscricao">
+                      <button>Inscreva-se</button>
+                    </a>
+                  </li>
             </ul>
             
             <div class="hamburger">
@@ -615,52 +754,119 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Tecnologia <span>Inclusiva</span> para PCDs</h1>
-            <p>Oferecemos soluções digitais acessíveis para pessoas com deficiência, promovendo inclusão e autonomia através da tecnologia.</p>
-            <div>
-                <a href="#services" class="btn">Nossos Serviços</a>
-                <a href="#registration" class="btn btn-outline">Quero me Inscrever</a>
+            <p>Bem-vindo ao InovaPCD – Onde sua Jornada de Capacitação e Autoconhecimento é possível!</p>
+                <a href="#about" class="btn">Nossa história</a>
             </div>
         </div>
     </section>
+
+    <!--Nossa história-->
+    <section id="about">
+      </section>
+      <div>
+        <div class="section-title">
+            <h2>Nossa <span>História</span></h2>
+            <p>A InovaPCD é uma empresa dedicada a promover a Capacitação profissional e o Desenvolvimento pessoal de pessoas com deficiência. Criada em 2025, nascemos da crença de que a inclusão se constrói através de oportunidades reais e da valorização do potencial humano.</p>
+            <p>Nosso compromisso é oferecer soluções inovadoras e acessíveis, que respeitem as individualidades de cada pessoa. Trabalhamos com uma equipe multidisciplinar, composta por profissionais com deficiência e especialistas em acessibilidade, para garantir que nossos serviços sejam verdadeiramente inclusivos.</p>
+            <p>E nossos valores são a inclusão, a acessibilidade, a autonomia e a inovação.</p>
+
+            <section class="section" id="mission">
+            <div class="missao-container">
+                <h2>Missão</h2>
+                <p>Nossa missão vai além da qualificação técnica, nós:</p>
+                <ul class="missao-lista">
+                    <li>
+                        <span aria-hidden="true">🔹</span>
+                        <span>Oferecemos <strong>cursos adaptados</strong> às necessidades específicas de cada pessoa</span>
+                    </li>
+                    <li>
+                        <span aria-hidden="true">🔹</span>
+                        <span>Desenvolvemos <strong>habilidades socioemocionais</strong> para fortalecer a autoconfiança</span>
+                    </li>
+                    <li>
+                        <span aria-hidden="true">🔹</span>
+                        <span>Conectamos talentos com o <strong>mercado de trabalho</strong> através de parcerias estratégicas</span>
+                    </li>
+                    <li>
+                        <span aria-hidden="true">🔹</span>
+                        <span>Utilizamos <strong>tecnologia assistiva</strong> para uma experiência 100% acessível</span>
+                    </li>
+                </ul>
+        </div>
+
+        
+
+      </div>
 
     <!-- Serviços -->
-    <section class="section" id="services">
-        <div class="section-title">
-            <h2>Nossos <span>Serviços</span></h2>
-            <p>Conheça nossas soluções especialmente desenvolvidas para atender às necessidades de pessoas com deficiência</p>
-        </div>
+
+        <section class="services-section" id="services">
+            <div class="section-header">
+                <h2>Explorar <span>cursos</span></h2>
+                <p class="section-subtitle">Conheça nossos serviços especialmente desenvolvidos para atender às necessidades de pessoas com deficiência.</p>
+            </div>
+            
+            <div class="services-container">
+                <!-- Acessibilidade Digital -->
+                <div class="service-card">
+                    <div class="card-icon">
+                        <i class="fas fa-universal-access"></i>
+                    </div>
+                    <h3>Acessibilidade Digital</h3>
+                    <p>Recursos de acessibilidade adaptados para diversos tipos de deficiência.</p>
+                    <a href="#" class="card-button">Saiba mais</a>
+                </div>
         
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-universal-access"></i>
+                <!-- Cursos Inclusivos -->
+                <div class="service-card featured">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Cursos Inclusivos</h3>
+                    <p>Capacitação profissional e desenvolvimento de habilidades socioemocionais.</p>
+                    
+                    <div class="categories-wrapper">
+                        <span class="category-tag">Tecnologia</span>
+                        <span class="category-tag">Administrativo</span>
+                        <span class="category-tag">Saúde</span>
+                        <span class="category-tag">Socioemocional</span>
+                    </div>
+                    
+                    <div class="highlights-box">
+                        <p><i class="fas fa-check-circle"></i> Preparatório para Entrevistas</p>
+                        <p><i class="fas fa-check-circle"></i> Libras para o Mercado</p>
+                    </div>
+                    
+                    <a href="cursos.html" class="card-button primary">Explorar cursos</a>
                 </div>
-                <h3>Acessibilidade Digital</h3>
-                <p>Desenvolvimento de sites e aplicativos com recursos de acessibilidade para diversos tipos de deficiência.</p>
-                <a href="#" class="btn" style="margin: 20px 0 0; display: inline-block;">Saiba mais</a>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-graduation-cap"></i>
+        
+                <!-- Consultoria -->
+                <div class="service-card">
+                    <div class="card-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Consultoria</h3>
+                    <p>Orientação para empresas que desejam se tornar mais inclusivas.</p>
+                    <a href="#" class="card-button">Saiba mais</a>
                 </div>
-                <h3>Cursos Inclusivos</h3>
-                <p>Capacitação profissional com metodologias adaptadas para diferentes tipos de deficiência.</p>
-                <a href="#" class="btn" style="margin: 20px 0 0; display: inline-block;">Saiba mais</a>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-hands-helping"></i>
+        
+                <!-- Recrutamento Inclusivo -->
+                <div class="service-card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Recrutamento Inclusivo</h3>
+                    <p>Junte-se à nossa equipe de orientadores especializados.</p>
+                    <a href="#" class="card-button">Candidate-se</a>
                 </div>
-                <h3>Consultoria</h3>
-                <p>Orientação para empresas que desejam se tornar mais inclusivas em seus processos e tecnologias.</p>
-                <a href="#" class="btn" style="margin: 20px 0 0; display: inline-block;">Saiba mais</a>
             </div>
-        </div>
-    </section>
+        </section>
+        
 
     <!-- Formulário de Inscrição -->
+    <section id="formulario-inscricao">
+        <!-- Seu formulário aqui -->
+      </section>
     <section class="registration" id="registration">
         <div class="section-title">
             <h2>Formulário de <span>Inscrição</span></h2>
@@ -759,13 +965,13 @@
     <section class="testimonials" id="testimonials">
         <div class="section-title">
             <h2>Depoimentos</h2>
-            <p>Veja o que nossos alunos e clientes têm a dizer sobre nossos serviços</p>
+            <p>Veja o que nossos alunos têm a dizer sobre nossos serviços</p>
         </div>
         
         <div class="testimonial-slider">
             <div class="testimonial-card">
                 <div class="testimonial-text">
-                    A Inclusão Digital mudou minha vida profissional. Como pessoa com deficiência visual, finalmente pude acessar conteúdos de forma independente.
+                    A InovaPCD mudou minha vida profissional. Como pessoa com deficiência visual, finalmente pude acessar conteúdos de forma independente.
                 </div>
                 <div class="testimonial-author">
                     <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Ana Silva">
@@ -778,7 +984,7 @@
             
             <div class="testimonial-card">
                 <div class="testimonial-text">
-                    A consultoria nos ajudou a tornar nosso site acessível e aumentar nosso público em 40%. Fundamental para nossa empresa.
+                    A consultoria me ajudou a implementar práticas inclusivas na minha empresa. O suporte foi excepcional e os resultados são visíveis.
                 </div>
                 <div class="testimonial-author">
                     <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Carlos Oliveira">
