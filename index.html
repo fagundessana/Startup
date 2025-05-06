@@ -331,6 +331,65 @@
             font-size: 0.9rem;
         }
 
+        /* Formulário de Inscrição */
+        .registration {
+            background-color: var(--primary);
+            padding: 80px 20px;
+        }
+
+        .registration-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 123, 37, 0.2);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
         /* Rodapé */
         footer {
             background-color: var(--primary);
@@ -432,6 +491,27 @@
             font-size: 1.4rem;
         }
 
+        /* Mensagens do formulário */
+        .form-message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+            display: block;
+        }
+
         /* Responsividade */
         @media (max-width: 768px) {
             .nav-links {
@@ -464,6 +544,16 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+
+            .registration-form {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -494,7 +584,7 @@
     <header>
         <nav>
             <a href="#" class="logo">
-                <img src="e:\Project startup\img\LOGO.jpg" alt="Logo Inclusão Digital">
+                <img src="https://via.placeholder.com/50" alt="Logo Inclusão Digital">
                 <div class="logo-text">
                     <h1>Inclusão Digital</h1>
                     <span>Acessibilidade para todos</span>
@@ -504,7 +594,7 @@
             <ul class="nav-links">
                 <li><a href="#home" class="active">Início</a></li>
                 <li><a href="#services">Serviços</a></li>
-                <li><a href="#about">Sobre</a></li>
+                <li><a href="#registration">Inscrição</a></li>
                 <li><a href="#testimonials">Depoimentos</a></li>
                 <li><a href="#contact">Contato</a></li>
             </ul>
@@ -524,7 +614,7 @@
             <p>Oferecemos soluções digitais acessíveis para pessoas com deficiência, promovendo inclusão e autonomia através da tecnologia.</p>
             <div>
                 <a href="#services" class="btn">Nossos Serviços</a>
-                <a href="#contact" class="btn btn-outline">Fale Conosco</a>
+                <a href="#registration" class="btn btn-outline">Quero me Inscrever</a>
             </div>
         </div>
     </section>
@@ -563,6 +653,101 @@
                 <p>Orientação para empresas que desejam se tornar mais inclusivas em seus processos e tecnologias.</p>
                 <a href="#" class="btn" style="margin: 20px 0 0; display: inline-block;">Saiba mais</a>
             </div>
+        </div>
+    </section>
+
+    <!-- Formulário de Inscrição -->
+    <section class="registration" id="registration">
+        <div class="section-title">
+            <h2>Formulário de <span>Inscrição</span></h2>
+            <p>Preencha o formulário abaixo para se inscrever em nossos cursos e programas</p>
+        </div>
+        
+        <div class="registration-form">
+            <div id="formMessage" class="form-message"></div>
+            
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="fullName">Nome Completo *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="birthDate">Data de Nascimento *</label>
+                        <input type="date" id="birthDate" name="birthDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gênero</label>
+                        <select id="gender" name="gender">
+                            <option value="">Selecione</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="outro">Outro</option>
+                            <option value="prefiro-nao-informar">Prefiro não informar</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="disabilityType">Tipo de Deficiência *</label>
+                    <select id="disabilityType" name="disabilityType" required>
+                        <option value="">Selecione</option>
+                        <option value="visual">Deficiência Visual</option>
+                        <option value="auditiva">Deficiência Auditiva</option>
+                        <option value="fisica">Deficiência Física</option>
+                        <option value="intelectual">Deficiência Intelectual</option>
+                        <option value="multipla">Deficiência Múltipla</option>
+                        <option value="outra">Outra</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="disabilityDescriptionGroup" style="display: none;">
+                    <label for="disabilityDescription">Descreva sua deficiência</label>
+                    <textarea id="disabilityDescription" name="disabilityDescription"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="courseInterest">Interesse Principal *</label>
+                    <select id="courseInterest" name="courseInterest" required>
+                        <option value="">Selecione</option>
+                        <option value="tecnologia">Curso de Tecnologia</option>
+                        <option value="design">Curso de Design Acessível</option>
+                        <option value="programacao">Curso de Programação</option>
+                        <option value="emprego">Programa de Inclusão no Mercado de Trabalho</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="additionalInfo">Informações Adicionais</label>
+                    <textarea id="additionalInfo" name="additionalInfo" placeholder="Nos conte mais sobre você e suas necessidades específicas"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="acceptTerms" required>
+                        Eu concordo com os <a href="#" style="color: var(--accent);">Termos de Uso</a> e <a href="#" style="color: var(--accent);">Política de Privacidade</a> *
+                    </label>
+                </div>
+                
+                <div class="form-footer">
+                    <button type="submit" class="btn">
+                        <i class="fas fa-paper-plane"></i> Enviar Inscrição
+                    </button>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -615,186 +800,6 @@
         </div>
     </section>
 
-<section id="contact">
-        <h2>Entre em Contato</h2>
-        <form id="contactForm">
-            <div class="form-group">
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="service">Serviço de Interesse:</label>
-                <select id="service" name="service" required>
-                    <option value="">Selecione um serviço</option>
-                    <option value="Desenvolvimento Web">Desenvolvimento Web</option>
-                    <option value="Aplicativos Móveis">Aplicativos Móveis</option>
-                    <option value="Inteligência Artificial">Inteligência Artificial</option>
-                    <option value="Consultoria em TI">Consultoria em TI</option>
-                    <option value="Cloud Computing">Cloud Computing</option>
-                    <option value="Segurança Digital">Segurança Digital</option>
-                    <option value="Outro">Outro</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="message">Mensagem:</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-            <button type="submit" class="btn" style="width: 100%;">Enviar Mensagem</button>
-        </form>
-        
-        <div class="social-links">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        </div>
-    </section>
-
-    <div class="footer-content">
-        <div>
-            <h3>SiteMassa</h3>
-            <p>Transformando ideias em soluções digitais desde 2025.</p>
-        </div>
-        <div>
-            <h3>Links Rápidos</h3>
-            <ul class="footer-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Sobre Nós</a></li>
-                <li><a href="#services">Serviços</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3>Serviços</h3>
-            <ul class="footer-links">
-                <li><a href="#">Desenvolvimento Web</a></li>
-                <li><a href="#">Aplicativos Móveis</a></li>
-                <li><a href="#">Inteligência Artificial</a></li>
-                <li><a href="#">Consultoria em TI</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3>Contato</h3>
-            <ul class="footer-links">
-                <li><i class="fas fa-envelope"></i> contato@sitemassa.com</li>
-                <li><i class="fas fa-phone"></i> (48) 99999-9999</li>
-                <li><i class="fas fa-map-marker-alt"></i> Florianópolis, SC</li>
-            </ul>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2023 SiteMassa. Todos os direitos reservados.</p>
-    </footer>
-
-    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
-
-    <script>
-        // Menu Mobile
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-
-        // Fechar menu ao clicar em um link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-
-        // Validação do formulário
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
-            
-            if(name && email && service && message) {
-                // Simulação de envio
-                const feedback = document.createElement('div');
-                feedback.style.padding = '15px';
-                feedback.style.marginTop = '20px';
-                feedback.style.backgroundColor = 'rgba(255, 123, 37, 0.2)';
-                feedback.style.color = 'var(--accent)';
-                feedback.style.borderRadius = '5px';
-                feedback.style.textAlign = 'center';
-                feedback.style.fontWeight = 'bold';
-                feedback.innerHTML = Obrigado, ${name}! Sua mensagem sobre ${service} foi enviada. Entraremos em contato em breve pelo e-mail ${email}.;
-                
-                this.appendChild(feedback);
-                
-                // Limpa o formulário após 5 segundos
-                setTimeout(() => {
-                    this.reset();
-                    feedback.remove();
-                }, 5000);
-            } else {
-                alert('Por favor, preencha todos os campos do formulário.');
-            }
-        });
-        
-        // Efeito suave de rolagem para os links do menu
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Animação dos cards de serviços e equipe
-        const animateOnScroll = () => {
-            const cards = document.querySelectorAll('.service-card, .team-member, .stat-item');
-            
-            cards.forEach(card => {
-                const cardPosition = card.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if(cardPosition < screenPosition) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }
-            });
-        };
-        
-        // Define opacidade inicial para a animação
-        document.querySelectorAll('.service-card, .team-member, .stat-item').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        });
-
-        // Botão Voltar ao Topo
-        const backToTopButton = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', () => {
-            animateOnScroll();
-            
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('active');
-            } else {
-                backToTopButton.classList.remove('active');
-            }
-        });
-
-        // Executa uma vez ao carregar a página para verificar elementos já visíveis
-        animateOnScroll();
-    </script>
-
     <!-- Rodapé -->
     <footer id="contact">
         <div class="footer-content">
@@ -814,7 +819,7 @@
                 <ul class="footer-links">
                     <li><a href="#home">Início</a></li>
                     <li><a href="#services">Serviços</a></li>
-                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#registration">Inscrição</a></li>
                     <li><a href="#testimonials">Depoimentos</a></li>
                     <li><a href="#contact">Contato</a></li>
                 </ul>
@@ -886,6 +891,18 @@
             document.body.classList.remove('high-contrast');
         });
         
+        // Mostrar/ocultar descrição da deficiência
+        const disabilityType = document.getElementById('disabilityType');
+        const disabilityDescriptionGroup = document.getElementById('disabilityDescriptionGroup');
+        
+        disabilityType.addEventListener('change', function() {
+            if (this.value === 'outra') {
+                disabilityDescriptionGroup.style.display = 'block';
+            } else {
+                disabilityDescriptionGroup.style.display = 'none';
+            }
+        });
+        
         // Inicializar slider de depoimentos
         const testimonialSlider = new Swiper('.testimonial-slider', {
             loop: true,
@@ -906,6 +923,30 @@
                     slidesPerView: 3,
                 },
             }
+        });
+        
+        // Formulário de Inscrição
+        const registrationForm = document.getElementById('registrationForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simular envio do formulário
+            setTimeout(() => {
+                formMessage.textContent = 'Inscrição enviada com sucesso! Entraremos em contato em breve.';
+                formMessage.classList.add('success');
+                registrationForm.reset();
+                
+                // Rolagem suave para a mensagem de sucesso
+                formMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                // Limpar mensagem após 5 segundos
+                setTimeout(() => {
+                    formMessage.textContent = '';
+                    formMessage.classList.remove('success');
+                }, 5000);
+            }, 1000);
         });
         
         // Scroll suave para links internos
