@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cursos profissionais inclusivos para pessoas com deficiência (PCDs)">
+    <title>Cursos Inclusivos | Capacitação Profissional para PCDs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        :root {
+            --primary: #000038;
+            --secondary: #3E92CC;
+            --accent: #ff6822;
+            --accent-dark: #e55c1d;
+            --text: #ffffff;
+            --text-secondary: #e0e0e0;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --section-bg: #1A1A2E;
+            --accessibility-bg: #16213E;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--section-bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Barra de Acessibilidade */
+        .accessibility-bar {
+            background-color: var(--accessibility-bg);
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .accessibility-container {
+            display: flex;
+            justify-content: flex-end;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .accessibility-tool {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s;
+            background: none;
+            border: none;
+        }
+
+        .accessibility-tool:hover, 
+        .accessibility-tool:focus {
+            color: var(--accent);
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .accessibility-tool i {
+            font-size: 1.1rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            object-fit: cover;
+        }
+        
+        .logo-text h1 {
+            color: var(--text);
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        /* Menu Principal */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+            font-size: 1.05rem;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a:focus,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a:focus::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Menu Hamburger */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--text);
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 56, 0.8), rgba(0, 0, 56, 0.8)), 
+                        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent);
+            color: var(--text);
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            font-size: 1.1rem;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            background-color: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgb(255, 255, 255);
+            outline: none;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover,
+        .btn-outline:focus {
+            background-color: var(--accent);
+        }
+
+        /* Seções */
+        .section {
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 span {
+            color: var(--accent);
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Cards de Cursos */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .course-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(255, 123, 37, 0.2);
+        }
+
+        .course-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .course-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .course-card p {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .course-features {
+            margin-bottom: 20px;
+            list-style: none;
+        }
+
+        .course-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .course-features i {
+            color: var(--accent);
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+
+        .course-duration, .course-level {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* Filtros */
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover, 
+        .filter-btn:focus,
+        .filter-btn.active {
+            background-color: var(--accent);
+            color: var(--text);
+            outline: none;
+        }
+
+        /* Depoimentos */
+        .testimonials {
+            background-color: var(--accessibility-bg);
+            padding: 80px 20px;
+        }
+
+        .testimonial-slider {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 15px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            color: var(--accent);
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .author-info h4 {
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--primary);
+            padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--text);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--text);
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover,
+        .social-links a:focus {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Acessibilidade */
+        .high-contrast {
+            --primary: #000000;
+            --secondary: #FFFFFF;
+            --accent: #FFFF00;
+            --text: #FFFFFF;
+            --text-secondary: #CCCCCC;
+            --card-bg: #222222;
+            --section-bg: #000000;
+            --accessibility-bg: #111111;
+        }
+
+        .font-size-1 {
+            font-size: 1.2rem;
+        }
+
+        .font-size-2 {
+            font-size: 1.4rem;
+        }
+
+        .font-size-3 {
+            font-size: 1.6rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transition: all 0.5s;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .filters {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 80px 20px;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Acessibilidade -->
+    <div class="accessibility-bar">
+        <div class="accessibility-container">
+            <button class="accessibility-tool" id="increaseFont" aria-label="Aumentar tamanho da fonte">
+                <i class="fas fa-font"></i>
+                <span>Aumentar Fonte</span>
+            </button>
+            <button class="accessibility-tool" id="decreaseFont" aria-label="Diminuir tamanho da fonte">
+                <i class="fas fa-font"></i>
+                <span>Diminuir Fonte</span>
+            </button>
+            <button class="accessibility-tool" id="highContrast" aria-label="Ativar alto contraste">
+                <i class="fas fa-adjust"></i>
+                <span>Alto Contraste</span>
+            </button>
+            <button class="accessibility-tool" id="normalContrast" aria-label="Restaurar contraste normal">
+                <i class="fas fa-circle"></i>
+                <span>Contraste Normal</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Cabeçalho -->
+    <header>
+        <nav>
+            <div class="logo-text">
+                <h1>InovaPCD</h1>
+                <span>Capacita, Inclui e Transforma</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index2.html">Nossa história</a></li>
+                <li><a href="index3.html.html">Serviços</a></li>
+                <li><a href="index6.html">Curiosidades</a></li>
+                <li><a href="index4.html.html">Contato</a></li>
+                <li><a href="index5.html" class="active btn-nav">Inscreva-se</a></li>
+            </ul>
+            
+            
+            <div class="hamburger" aria-label="Menu mobile" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Cursos <span>Inclusivos</span> para PCDs</h1>
+            <p>Capacitação profissional acessível para pessoas com deficiência. Conquiste sua autonomia e prepare-se para o mercado de trabalho.</p>
+            <div>
+                <a href="#courses" class="btn">Ver Cursos</a>
+                <a href="#resources" class="btn btn-outline">Recursos de Acessibilidade</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cursos -->
+    <section class="section" id="courses">
+        <div class="section-title">
+            <h2>Nossos <span>Cursos</span></h2>
+            <p>Selecione cursos adaptados para diferentes tipos de deficiência</p>
+        </div>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="visual">Deficiência Visual</button>
+            <button class="filter-btn" data-filter="auditiva">Deficiência Auditiva</button>
+            <button class="filter-btn" data-filter="motora">Deficiência Motora</button>
+            <button class="filter-btn" data-filter="intelectual">Deficiência Intelectual</button>
+        </div>
+        
+        <div class="courses-grid">
+            <div class="course-card" data-categories="visual">
+                <div class="course-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Programação Web Acessível</h3>
+                <p>Curso completo de desenvolvimento web com ferramentas adaptadas para deficientes visuais.</p>
+                <ul class="course-features">
+                    <li><i class="fas fa-check"></i> Leitores de tela integrados</li>
+                    <li><i class="fas fa-check"></i> Material em áudio e braille digital</li>
+                    <li><i class="fas fa-check"></i> Aulas com descrição detalhada</li>
+                </ul>
+                <div class="course-meta">
+                    <span class="course-duration"><i class="far fa-clock"></i> 80 horas</span>
+                    <span class="course-level"><i class="fas fa-signal"></i> Intermediário</span>
+                </div>
+                <a href="#" class="btn" style="margin-top: 20px;">Inscreva-se</a>
+            </div>
+            
+            <div class="course-card" data-categories="auditiva">
+                <div class="course-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Marketing Digital Inclusivo</h3>
+                <p>Aprenda estratégias de marketing digital com recursos para deficientes auditivos.</p>
+                <ul class="course-features">
+                    <li><i class="fas fa-check"></i> Legendas em todos os vídeos</li>
+                    <li><i class="fas fa-check"></i> Intérprete de LIBRAS disponível</li>
+                    <li><i class="fas fa-check"></i> Material visual completo</li>
+                </ul>
+                <div class="course-meta">
+                    <span class="course-duration"><i class="far fa-clock"></i> 60 horas</span>
+                    <span class="course-level"><i class="fas fa-signal"></i> Básico</span>
+                </div>
+                <a href="#" class="btn" style="margin-top: 20px;">Inscreva-se</a>
+            </div>
+            
+            <div class="course-card" data-categories="motora">
+                <div class="course-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Design Gráfico Adaptado</h3>
+                <p>Curso de design utilizando softwares adaptados para pessoas com deficiência motora.</p>
+                <ul class="course-features">
+                    <li><i class="fas fa-check"></i> Controle por comando de voz</li>
+                    <li><i class="fas fa-check"></i> Adaptação para uso com pouca mobilidade</li>
+                    <li><i class="fas fa-check"></i> Aulas práticas com acompanhamento</li>
+                </ul>
+                <div class="course-meta">
+                    <span class="course-duration"><i class="far fa-clock"></i> 100 horas</span>
+                    <span class="course-level"><i class="fas fa-signal"></i> Avançado</span>
+                </div>
+                <a href="#" class="btn" style="margin-top: 20px;">Inscreva-se</a>
+            </div>
+            
+            <div class="course-card" data-categories="intelectual">
+                <div class="course-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Gastronomia Inclusiva</h3>
+                <p>Curso de culinária adaptado para pessoas com deficiência intelectual.</p>
+                <ul class="course-features">
+                    <li><i class="fas fa-check"></i> Metodologia simplificada</li>
+                    <li><i class="fas fa-check"></i> Acompanhamento pedagógico</li>
+                    <li><i class="fas fa-check"></i> Aulas práticas supervisionadas</li>
+                </ul>
+                <div class="course-meta">
+                    <span class="course-duration"><i class="far fa-clock"></i> 120 horas</span>
+                    <span class="course-level"><i class="fas fa-signal"></i> Básico</span>
+                </div>
+                <a href="#" class="btn" style="margin-top: 20px;">Inscreva-se</a>
+            </div>
+            
+            <div class="course-card" data-categories="visual auditiva">
+                <div class="course-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Desenvolvimento de Apps Acessíveis</h3>
+                <p>Aprenda a criar aplicativos móveis com foco em acessibilidade.</p>
+                <ul class="course-features">
+                    <li><i class="fas fa-check"></i> Recursos para DV e DA</li>
+                    <li><i class="fas fa-check"></i> Projetos práticos inclusivos</li>
+                    <li><i class="fas fa-check"></i> Certificação reconhecida</li>
+                </ul>
+                <div class="course-meta">
+                    <span class="course-duration"><i class="far fa-clock"></i> 90 horas</span>
+                    <span class="course-level"><i class="fas fa-signal"></i> Intermediário</span>
+                </div>
+                <a href="#" class="btn" style="margin-top: 20px;">Inscreva-se</a>
+            </div>
+            
+            <div class="course-card" data-categories="motora intelectual">
+                <div class="course-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>Atendimento ao Cliente Inclusivo</h3>
+                <p>Capacitação para atuar em funções de atendimento ao público.</p>
+                <ul class="course-features">
+                    <li><i class="fas fa-check"></i> Técnicas adaptadas</li>
+                    <li><i class="fas fa-check"></i> Simulações de atendimento</li>
+                    <li><i class="fas fa-check"></i> Preparação para entrevistas</li>
+                </ul>
+                <div class="course-meta">
+                    <span class="course-duration"><i class="far fa-clock"></i> 50 horas</span>
+                    <span class="course-level"><i class="fas fa-signal"></i> Básico</span>
+                </div>
+                <a href="#" class="btn" style="margin-top: 20px;">Inscreva-se</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos -->
+    <section class="section" id="resources" style="background-color: var(--accessibility-bg);">
+        <div class="section-title">
+            <h2>Recursos de <span>Acessibilidade</span></h2>
+            <p>Tecnologias e ferramentas que tornam nossos cursos acessíveis</p>
+        </div>
+        
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Para Deficiência Visual</h3>
+                <ul class="course-features">
+                    <li><i class="fas fa-check"></i> Leitores de tela (NVDA, JAWS)</li>
+                    <li><i class="fas fa-check"></i> Material em braille digital</li>
+                    <li><i class="fas fa-check"></i> Descrição detalhada de imagens</li>
+                    <li><i class="fas fa-check"></i> Aulas em áudio com transcrição</li>
+                </ul>
+            </div>
+            
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-deaf"></i>
+                </div>
+                <h3>Para Deficiência Auditiva</h3>
+                <ul class="course-features">
+                    <li><i class="fas fa-check"></i> Legendas em todos os vídeos</li>
+                    <li><i class="fas fa-check"></i> Intérpretes de LIBRAS</li>
+                    <li><i class="fas fa-check"></i> Material visual complementar</li>
+                    <li><i class="fas fa-check"></i> Aulas com recursos visuais</li>
+                </ul>
+            </div>
+            
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-wheelchair"></i>
+                </div>
+                <h3>Para Deficiência Motora</h3>
+                <ul class="course-features">
+                    <li><i class="fas fa-check"></i> Controle por comando de voz</li>
+                    <li><i class="fas fa-check"></i> Adaptação de interfaces</li>
+                    <li><i class="fas fa-check"></i> Tempo estendido para atividades</li>
+                    <li><i class="fas fa-check"></i> Acompanhamento personalizado</li>
+                </ul>
+            </div>
+
+            </div>
+       
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-title">
+            <h2>Histórias de <span>Sucesso</span></h2>
+            <p>Veja o que nossos alunos têm a dizer sobre os cursos</p>
+        </div>
+        
+        <div class="testimonial-slider">
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    Graças ao curso de programação acessível, consegui meu primeiro emprego como desenvolvedor front-end. As ferramentas adaptadas para deficientes visuais foram essenciais para meu aprendizado.
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="João Silva" loading="lazy">
+                    <div class="author-info">
+                        <h4>João Silva</h4>
+                        <p>Aluno - Deficiência Visual</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    Como pessoa surda, sempre tive dificuldade com cursos online. Aqui encontrei material totalmente acessível, com legendas e intérprete de LIBRAS. Completei o curso e hoje trabalho com marketing digital.
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Ana Oliveira" loading="lazy">
+                    <div class="author-info">
+                        <h4>Ana Oliveira</h4>
+                        <p>Aluna - Deficiência Auditiva</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    O curso de atendimento ao cliente me deu a confiança que precisava. Com a metodologia adaptada para minha deficiência intelectual, pude aprender no meu ritmo e hoje trabalho em uma grande empresa.
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Carlos Santos" loading="lazy">
+                    <div class="author-info">
+                        <h4>Carlos Santos</h4>
+                        <p>Aluno - Deficiência Intelectual</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Cursos Inclusivos</h3>
+                <p>Capacitação profissional acessível para pessoas com deficiência.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#courses">Cursos</a></li>
+                    <li><a href="#resources">Recursos</a></li>
+                    <li><a href="#testimonials">Depoimentos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Cursos</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Programação Web</a></li>
+                    <li><a href="#">Marketing Digital</a></li>
+                    <li><a href="#">Design Gráfico</a></li>
+                    <li><a href="#">Gastronomia</a></li>
+                    <li><a href="#">Desenvolvimento de Apps</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Cursos Inclusivos. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Hamburguer
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navLinksItems = document.querySelectorAll('.nav-links a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        navLinksItems.forEach(item => {
+            item.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Filtro de Cursos
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const courseCards = document.querySelectorAll('.course-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                courseCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-categories').includes(filterValue)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Controles de Acessibilidade
+        const increaseFontBtn = document.getElementById('increaseFont');
+        const decreaseFontBtn = document.getElementById('decreaseFont');
+        const highContrastBtn = document.getElementById('highContrast');
+        const normalContrastBtn = document.getElementById('normalContrast');
+        const htmlElement = document.documentElement;
+        
+        let currentFontSize = 1; // 1 = tamanho normal (100%)
+
+        increaseFontBtn.addEventListener('click', () => {
+            if (currentFontSize < 3) {
+                currentFontSize++;
+                updateFontSize();
+            }
+        });
+
+        decreaseFontBtn.addEventListener('click', () => {
+            if (currentFontSize > 1) {
+                currentFontSize--;
+                updateFontSize();
+            }
+        });
+
+        function updateFontSize() {
+            htmlElement.classList.remove('font-size-1', 'font-size-2', 'font-size-3');
+            if (currentFontSize > 1) {
+                htmlElement.classList.add(`font-size-${currentFontSize}`);
+            }
+        }
+
+        highContrastBtn.addEventListener('click', () => {
+            htmlElement.classList.add('high-contrast');
+        });
+
+        normalContrastBtn.addEventListener('click', () => {
+            htmlElement.classList.remove('high-contrast');
+        });
+
+        // Suave scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

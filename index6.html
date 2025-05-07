@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça a história, missão e valores da InovaPCD - Capacitação e inclusão para pessoas com deficiência">
+    <title>Sobre Nós | InovaPCD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000038;
+            --secondary: #3E92CC;
+            --accent: #ff6822;
+            --accent-dark: #e55c1d;
+            --text: #ffffff;
+            --text-secondary: #e0e0e0;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --section-bg: #1A1A2E;
+            --accessibility-bg: #16213E;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--section-bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Barra de Acessibilidade */
+        .accessibility-bar {
+            background-color: var(--accessibility-bg);
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .accessibility-container {
+            display: flex;
+            justify-content: flex-end;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .accessibility-tool {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s;
+            background: none;
+            border: none;
+        }
+
+        .accessibility-tool:hover, 
+        .accessibility-tool:focus {
+            color: var(--accent);
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .accessibility-tool i {
+            font-size: 1.1rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            object-fit: cover;
+        }
+        
+        .logo-text h1 {
+            color: var(--text);
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        /* Menu Principal */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+            font-size: 1.05rem;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a:focus,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a:focus::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Menu Hamburger */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--text);
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 56, 0.8), rgba(0, 0, 56, 0.8)), 
+                        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent);
+            color: var(--text);
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            font-size: 1.1rem;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            background-color: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgb(255, 255, 255);
+            outline: none;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover,
+        .btn-outline:focus {
+            background-color: var(--accent);
+        }
+
+        /* Seções */
+        .section {
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 span {
+            color: var(--accent);
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+
+/* Seção Entendendo os PCDs */
+#pcd-info {
+    background-color: var(--accessibility-bg);
+}
+
+.pcd-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.pcd-card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    border-left: 5px solid var(--accent);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.pcd-card:nth-child(2) {
+    border-left-color: var(--secondary);
+}
+
+.pcd-card:nth-child(3) {
+    border-left-color: var(--primary);
+}
+
+.pcd-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.pcd-icon {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.pcd-card:nth-child(2) .pcd-icon {
+    color: var(--secondary);
+}
+
+.pcd-card:nth-child(3) .pcd-icon {
+    color: var(--primary);
+}
+
+.pcd-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text);
+}
+
+.pcd-card p {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.pcd-card ul {
+    color: var(--text-secondary);
+    padding-left: 20px;
+    margin-bottom: 15px;
+    list-style-type: none;
+}
+
+.pcd-card ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.pcd-card ul li:before {
+    content: "•";
+    color: var(--accent);
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -5px;
+}
+
+.pcd-card:nth-child(2) ul li:before {
+    color: var(--secondary);
+}
+
+/* Tipos de deficiência */
+.deficiency-types {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.deficiency-item {
+    background-color: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+    transition: all 0.3s ease;
+}
+
+.deficiency-item:hover {
+    transform: translateY(-3px);
+    background-color: rgba(255,255,255,0.1);
+}
+
+.deficiency-item:nth-child(2) {
+    border-left-color: var(--secondary);
+}
+
+.deficiency-item:nth-child(3) {
+    border-left-color: #4CAF50;
+}
+
+.deficiency-item:nth-child(4) {
+    border-left-color: #FFC107;
+}
+
+.deficiency-item:nth-child(5) {
+    grid-column: span 2;
+    border-left-color: #9C27B0;
+}
+
+.deficiency-item h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.deficiency-item:nth-child(2) h4 {
+    color: var(--secondary);
+}
+
+.deficiency-item:nth-child(3) h4 {
+    color: #4CAF50;
+}
+
+.deficiency-item:nth-child(4) h4 {
+    color: #FFC107;
+}
+
+.deficiency-item:nth-child(5) h4 {
+    color: #9C27B0;
+}
+
+.deficiency-item p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* Estatísticas */
+.pcd-stats {
+    max-width: 1000px;
+    margin: 50px auto 0;
+    background-color: var(--primary);
+    border-radius: 15px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(10, 36, 99, 0.3);
+}
+
+.pcd-stats h3 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: var(--text);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.stat-item {
+    padding: 15px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.stat-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+  /* Menu Hamburguer */
+  .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+            background: transparent;
+            border: none;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 1.5625rem;
+            height: 0.1875rem;
+            margin: 0.3125rem;
+            background-color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+         /* Acessibilidade */
+         .high-contrast {
+            --primary: #000000;
+            --secondary: #FFFFFF;
+            --accent: #FFFF00;
+            --text: #FFFFFF;
+            --text-secondary: #CCCCCC;
+            --card-bg: #222222;
+            --section-bg: #000000;
+            --accessibility-bg: #111111;
+        }
+
+        .font-size-1 {
+            font-size: 1.2rem;
+        }
+
+        .font-size-2 {
+            font-size: 1.4rem;
+        }
+
+        .font-size-3 {
+            font-size: 1.6rem;
+        }
+
+
+        /* Responsividade */
+        @media (max-width: 62rem) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content h2, .mission-container h2, .team-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 48rem) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 18.75rem;
+                height: 100vh;
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1.875rem;
+                transition: all 0.5s;
+                z-index: 999;
+                padding: 1.25rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .accessibility-container {
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+@media (max-width: 48rem) {
+    /* estilos */
+}
+
+@media (max-width: 30rem) {
+    /* estilos */
+}
+
+
+
+
+            
+            .hero {
+                padding: 6.25rem 1.25rem;
+                min-height: 70vh;
+            }
+            
+            .btn {
+                padding: 0.75rem 1.5625rem;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 15.625rem;
+            }
+
+            .logo-img {
+                width: 3.125rem;
+                height: 3.125rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+
+            .logo-text span {
+                font-size: 0.8rem;
+            }
+
+            .about-content h2, .mission-container h2, .team-section h2 {
+                font-size: 1.8rem;
+            }
+            @media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .member-image-container {
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-section {
+        padding: 2rem 1rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .member-image-container {
+        height: 200px; /* Mais alto em mobile para melhor visualização */
+    }
+}
+        
+    </style>
+
+
+</head>
+<body>
+     <!-- Barra de Acessibilidade -->
+     <div class="accessibility-bar">
+        <div class="accessibility-container">
+            <button class="accessibility-tool" id="increaseFont" aria-label="Aumentar tamanho da fonte">
+                <i class="fas fa-font"></i>
+                <span>Aumentar Fonte</span>
+            </button>
+            <button class="accessibility-tool" id="decreaseFont" aria-label="Diminuir tamanho da fonte">
+                <i class="fas fa-font"></i>
+                <span>Diminuir Fonte</span>
+            </button>
+            <button class="accessibility-tool" id="highContrast" aria-label="Ativar alto contraste">
+                <i class="fas fa-adjust"></i>
+                <span>Alto Contraste</span>
+            </button>
+            <button class="accessibility-tool" id="normalContrast" aria-label="Restaurar contraste normal">
+                <i class="fas fa-circle"></i>
+                <span>Contraste Normal</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Cabeçalho com Logo -->
+    <header>
+        <nav>
+                <div class="logo-text">
+                    <h1>InovaPCD</h1>
+                    <span>Capacita, Inclui e Transforma</span>
+                </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index2.html">Nossa história</a></li>
+                <li><a href="index3.html.html">Serviços</a></li>
+                <li><a href="index6.html">Curiosidades</a></li>
+                <li><a href="index4.html.html">Contato</a></li>
+                <li><a href="index5.html" class="active btn-nav">Inscreva-se</a></li>
+            </ul>
+            
+            <button class="hamburger" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+ <!-- Seção Entendendo os PCDs -->
+ <section class="section" id="pcd-info">
+    <div class="section-title">
+        <h2>Entendendo os <span>PCDs</span></h2>
+        <p>Conheça mais sobre as Pessoas com Deficiência e a importância da inclusão</p>
+    </div>
+
+    <div class="pcd-container">
+        <!-- Card 1: O que são PCDs -->
+        <div class="pcd-card">
+            <div class="pcd-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <h3>O que são PCDs?</h3>
+            <p>
+                PCD significa <strong>Pessoa com Deficiência</strong>, termo utilizado para se referir a indivíduos que têm impedimentos de longo prazo de natureza física, mental, intelectual ou sensorial.
+            </p>
+            <p>
+                A terminologia "PCD" foi adotada no Brasil a partir da Lei Brasileira de Inclusão (LBI - Lei 13.146/2015), substituindo expressões anteriores como "portadores de deficiência", que não refletiam adequadamente a relação entre a pessoa e sua deficiência.
+            </p>
+        </div>
+
+        <!-- Card 2: Por que o nome PCD -->
+        <div class="pcd-card">
+            <div class="pcd-icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <h3>Por que "PCD"?</h3>
+            <p>
+                O termo "Pessoa com Deficiência" (PCD) foi adotado seguindo a Convenção sobre os Direitos das Pessoas com Deficiência da ONU, que enfatiza:
+            </p>
+            <ul>
+                <li>A <strong>pessoa vem primeiro</strong>, não sua deficiência</li>
+                <li>A deficiência é uma <strong>característica</strong>, não define o indivíduo</li>
+                <li>Reflete o modelo social da deficiência, que vê as barreiras sociais como os principais limitadores</li>
+            </ul>
+        </div>
+
+        <!-- Card 3: Tipos de Deficiência -->
+        <div class="pcd-card">
+            <div class="pcd-icon">
+                <i class="fas fa-wheelchair"></i>
+            </div>
+            <h3>Deficiências Reconhecidas</h3>
+            <p>
+                Segundo a legislação brasileira, as deficiências se enquadram nas seguintes categorias:
+            </p>
+            
+            <div class="deficiency-types">
+                <div class="deficiency-item">
+                    <h4>Física</h4>
+                    <p>Amputações, paraplegia, má formação, etc.</p>
+                </div>
+                
+                <div class="deficiency-item">
+                    <h4>Visual</h4>
+                    <p>Cegueira, baixa visão, daltonismo, etc.</p>
+                </div>
+                
+                <div class="deficiency-item">
+                    <h4>Auditiva</h4>
+                    <p>Surdez, perda auditiva, etc.</p>
+                </div>
+                
+                <div class="deficiency-item">
+                    <h4>Intelectual</h4>
+                    <p>Síndrome de Down, autismo, etc.</p>
+                </div>
+                
+                <div class="deficiency-item">
+                    <h4>Múltipla</h4>
+                    <p>Combinação de duas ou mais deficiências</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Estatísticas -->
+    <div class="pcd-stats">
+        <h3>Dados sobre PCDs no Brasil</h3>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">24%</div>
+                <div class="stat-desc">da população brasileira tem algum tipo de deficiência</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">1%</div>
+                <div class="stat-desc">das vagas em empresas com 100+ funcionários devem ser para PCDs</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">53%</div>
+                <div class="stat-desc">das PCDs estão fora do mercado de trabalho</div>
+            </div>
+        </div>
+    </div>
+</section>
+       <!-- Rodapé -->
+       <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Início</a>
+                <a href="index2.html">Sobre</a>
+                <a href="index3.html">Serviços</a>
+                <a href="index4.html">Contato</a>
+                <a href="index5.html">Inscreva-se</a>
+                <a href="index6.html">Curiosidades</a>
+                <a href="#">Termos de Uso</a>
+            </div>
+            <p class="copyright">© 2025 InovaPCD. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script>
+        // Menu Hamburguer
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', 
+        hamburger.classList.contains('active'));
+});
+
+// Acessibilidade
+document.getElementById('increaseFont').addEventListener('click', () => {
+    document.body.classList.add('font-size-1');
+});
+
+document.getElementById('decreaseFont').addEventListener('click', () => {
+    document.body.classList.remove('font-size-1');
+});
+
+document.getElementById('highContrast').addEventListener('click', () => {
+    document.body.classList.add('high-contrast');
+});
+
+document.getElementById('normalContrast').addEventListener('click', () => {
+    document.body.classList.remove('high-contrast');
+});
+    </script>
+</body>
+</html>
