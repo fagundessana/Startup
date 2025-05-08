@@ -534,6 +534,74 @@
         .font-size-3 {
             font-size: 1.6rem;
         }
+        /* Estilos do Rodapé */
+footer {
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 2.5rem 1.25rem;
+    border-top: 3px solid var(--accent);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: var(--text);
+    background-color: var(--card-bg);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: center;
+}
 
 
         /* Responsividade */
@@ -604,19 +672,14 @@
                 max-width: 500px;
                 margin: 0 auto;
             }
-        }
-
-@media (max-width: 48rem) {
+        } (max-width:48rem)
+         {
     /* estilos */
 }
 
 @media (max-width: 30rem) {
     /* estilos */
 }
-
-
-
-
             
             .hero {
                 padding: 6.25rem 1.25rem;
@@ -669,6 +732,12 @@
     .member-image-container {
         height: 200px; /* Mais alto em mobile para melhor visualização */
     }
+    @media (max-width: 768px) {
+          .footer-links {
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+    }
 }
         
     </style>
@@ -700,7 +769,11 @@
 
     <!-- Cabeçalho com Logo -->
     <header>
-        <nav>
+            <nav aria-label="Navegação principal">
+                <a href="index.html" class="logo">
+                    <div class="logo-img">
+                        <img src="../img/LOGO.svg" alt="Logo InovaPCD"> <!-- Certifique-se que 'logo-inovapcd.png' está na mesma pasta -->
+                    </div>
                 <div class="logo-text">
                     <h1>InovaPCD</h1>
                     <span>Capacita, Inclui e Transforma</span>
@@ -822,13 +895,404 @@
         </div>
     </div>
 </section>
+<!-- Chatbot Inclusivo -->
+<button class="chat-button-open" id="open-chat">Abrir Chat</button>
+<div class="chat-container hidden" id="chat-container">
+    <div class="chat-header">
+        <h3>Chatbot Inclusivo</h3>
+        <button onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-box" id="chat-box"></div>
+    <div class="chat-input-area">
+        <input type="text" id="user-input" class="chat-input" placeholder="Digite sua mensagem..." onkeydown="if(event.key === 'Enter'){sendMessage();}">
+        <button class="chat-submit-button" onclick="sendMessage()">Enviar</button>
+    </div>
+</div>
+
+<style>
+    /* Estilos do Chatbot */
+    .chat-button-open {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 15px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        z-index: 1000;
+    }
+    .chat-button-open:hover {
+        background-color: #0056b3;
+    }
+    .chat-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        width: 300px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+    }
+    .chat-container.hidden {
+        display: none;
+    }
+    .chat-header {
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .chat-header h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+    }
+    .chat-header button {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 0;
+        color: #333;
+    }
+    .chat-box {
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-bottom: 1px solid #ccc;
+    }
+    .chat-input-area {
+        display: flex;
+        padding: 10px;
+    }
+    .chat-input {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px 0 0 8px;
+        box-sizing: border-box;
+        border-right: none;
+    }
+    .chat-submit-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 0 8px 8px 0;
+        padding: 10px 15px;
+        cursor: pointer;
+    }
+    .chat-submit-button:hover {
+        background-color: #45a049;
+    }
+    .user-message {
+        text-align: right;
+        margin: 5px 0;
+        padding: 8px;
+        background-color: #e0f7fa;
+        border-radius: 8px;
+        word-break: break-word;
+        color: #333;
+    }
+    .bot-message {
+        text-align: left;
+        margin: 5px 0;
+        padding: 8px;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        word-break: break-word;
+        color: #333;
+    }
+</style>
+
+<script>
+    // Funções do Chatbot
+    const chatContainer = document.getElementById("chat-container");
+    const openChatButton = document.getElementById("open-chat");
+    const chatBox = document.getElementById("chat-box");
+    const userInputElement = document.getElementById("user-input");
+
+    let lastBotMessage = "";
+
+    function toggleChat() {
+        chatContainer.classList.toggle("hidden");
+        openChatButton.style.display = chatContainer.classList.contains("hidden") ? "block" : "none";
+        if (!chatContainer.classList.contains("hidden") && chatBox.children.length === 0) {
+            const initialMessage = "Olá! Sou um assistente inclusivo. Você pode me perguntar sobre: capacitação, habilidades sociais, apoio emocional, acessibilidade, empresas inclusivas, direitos das pessoas com deficiência, tecnologia assistiva ou Libras.";
+            displayMessage(initialMessage, "bot");
+            lastBotMessage = initialMessage;
+        }
+    }
+
+    openChatButton.addEventListener("click", toggleChat);
+
+    function getBotResponse(userInput) {
+        // Lista de direitos específicos
+        const direitosEspecificos = ["saúde", "educação", "trabalho", "transporte"];
+
+        // Verifica se a última mensagem do bot foi sobre direitos específicos
+        if (
+            lastBotMessage &&
+            lastBotMessage.includes("Quais direitos das pessoas com deficiência você gostaria de conhecer: saúde, educação, trabalho, transporte ou outros?")
+        ) {
+            // Verifica se a resposta do usuário corresponde a um direito específico
+            for (const direito of direitosEspecificos) {
+                if (userInput.includes(direito)) {
+                    return `O direito à ${direito} está previsto na Lei Brasileira de Inclusão (Lei nº 13.146/2015).`;
+                }
+            }
+            if (userInput.toLowerCase().includes("outros")) {
+                return `Outros direitos importantes incluem a acessibilidade, a igualdade de oportunidades, a participação na vida política e pública, entre outros, todos assegurados pelo Estatuto da Pessoa com Deficiência.`;
+            }
+        }
+
+        // Verifica se a última mensagem do bot foi sobre exemplos de tecnologia assistiva
+        if (
+            lastBotMessage &&
+            lastBotMessage.includes("Leitores de tela como NVDA, JAWS e VoiceOver são exemplos.") &&
+            userInput.toLowerCase().includes("sim")
+        ) {
+            return "Ótimo! Para leitores de tela, você pode pesquisar por NVDA (gratuito), JAWS (pago) e VoiceOver (nativo em dispositivos Apple). Existem muitos tutoriais online para começar a usá-los.";
+        }
+
+        // Verifica se a última mensagem do bot foi sobre ajudar com acessibilidade (primeira resposta)
+        if (
+            lastBotMessage &&
+            lastBotMessage.includes("Posso te ajudar a verificar se um local ou produto é acessível?") &&
+            userInput.toLowerCase().includes("sim")
+        ) {
+            return "Para avaliarmos a acessibilidade, me diga qual local ou produto gostaria de verificar!";
+        }
+        if (
+            lastBotMessage &&
+            lastBotMessage.includes("Posso te ajudar a verificar se um local ou produto é acessível?") &&
+            userInput.toLowerCase().includes("me ajude")
+        ) {
+            return "Certo, diga qual local ou produto você quer verificar a acessibilidade.";
+        }
+
+        // Verifica se a última mensagem do bot pediu um local/produto para verificar a acessibilidade
+        if (
+            lastBotMessage &&
+            lastBotMessage.includes("Para avaliarmos a acessibilidade, me diga qual local ou produto gostaria de verificar!") &&
+            userInput.trim() !== ""
+        ) {
+            const localProduto = userInput.toLowerCase();
+            return `Para avaliar a acessibilidade de "${userInput}", observe o seguinte:\n\n` +
+                   `**Edificações Acessíveis:**\n` +
+                   `- Rampas e elevadores.\n` +
+                   `- Corrimãos e banheiros adaptados.\n` +
+                   `- Sinalização tátil e visual.\n` +
+                   `- Espaços de circulação adequados.\n\n` +
+                   `**Vias Públicas Acessíveis:**\n` +
+                   `- Piso tátil e faixas de pedestres seguras.\n` +
+                   `- Semáforos sonoros e rebaixamento de guias.\n` +
+                   `- Mobiliário urbano acessível.\n\n` +
+                   `**Transporte Público Acessível:**\n` +
+                   `- Elevadores ou rampas de acesso em veículos.\n` +
+                   `- Espaços reservados e sinalização adequada.\n` +
+                   `- Estações e terminais acessíveis.\n\n` +
+                   `**Lazer e Recreação Acessíveis:**\n` +
+                   `- Caminhos acessíveis em parques.\n` +
+                   `- Brinquedos adaptados e áreas de descanso adequadas.\n` +
+                   `- Sanitários acessíveis.\n\n` +
+                   `**Comércio e Serviços Acessíveis:**\n` +
+                   `- Acesso facilitado a lojas, restaurantes, cinemas, etc.\n\n` +
+                   `**Educação Acessível:**\n` +
+                   `- Acessibilidade física nas escolas e universidades.\n` +
+                   `- Acessibilidade pedagógica (materiais e métodos adaptados).\n\n` +
+                   `**Saúde Acessível:**\n` +
+                   `- Acesso facilitado a hospitais e clínicas.\n` +
+                   `- Equipamentos e comunicação acessíveis.`;
+        }
+        if (
+            lastBotMessage &&
+            lastBotMessage.includes("Certo, diga qual local ou produto você quer verificar a acessibilidade.") &&
+            userInput.trim() !== ""
+        ) {
+            return `Você quer verificar a acessibilidade de "${userInput}". É importante observar se há rampas, corrimãos, elevadores, informações em braile e outras adaptações para garantir a inclusão.`;
+        }
+
+        // Resposta de confirmação genérica
+        if (userInput.toLowerCase().includes("sim") && lastBotMessage) {
+            for (const key in database) {
+                for (const item of database[key]) {
+                    if (item.initial && item.initial.toLowerCase() === lastBotMessage.toLowerCase()) {
+                        // Verifica se a última mensagem foi sobre apoio emocional
+                        if (key === "apoio emocional") {
+                            // Abre os sites recomendados em novas abas
+                            window.open("https://www.psicologiaviva.com.br/", "_blank");
+                            return "Abri para você o site recomendado para apoio emocional. Espero que seja útil!";
+                        }
+                        return item.followUp;
+                    }
+                }
+            }
+        }
+
+        // Tenta identificar tema por palavra-chave direta
+        for (const key in database) {
+            if (userInput.includes(key)) {
+                const respostas = database[key];
+                const respostaAleatoria = respostas[Math.floor(Math.random() * respostas.length)];
+                return respostaAleatoria.initial;
+            }
+        }
+
+        // Verifica por palavras-chave flexíveis
+        for (const tema in palavrasChave) {
+            const lista = palavrasChave[tema];
+            if (lista.some(palavra => userInput.includes(palavra))) {
+                const respostas = database[tema];
+                const respostaAleatoria = respostas[Math.floor(Math.random() * respostas.length)];
+                return respostaAleatoria.initial;
+            }
+        }
+
+        // Resposta de despedida para respostas como "Ok", "Obrigado" e similares
+        if (
+            userInput.includes("ok") ||
+            userInput.includes("obrigado") ||
+            userInput.includes("obrigada") ||
+            userInput.includes("tchau") ||
+            userInput.includes("obg")
+        ) {
+            return "Fico feliz em ter ajudado! Se precisar de mais alguma coisa, é só chamar. Até logo! 😊";
+        }
+
+        return "Desculpe, não consegui identificar exatamente o que você perguntou. Por favor, seja mais específico.";
+    }
+
+    function displayMessage(message, sender) {
+        const chatBox = document.getElementById("chat-box");
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add(sender === "user" ? "user-message" : "bot-message");
+        messageDiv.innerHTML = message.replace(/\n/g, '<br>');
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function sendMessage() {
+        const userInputElement = document.getElementById("user-input");
+        const userInput = userInputElement.value;
+        if (userInput.trim() === "") return;
+
+        displayMessage(userInput, "user");
+        userInputElement.value = "";
+
+        const lastBotMessage = getLastBotMessage();
+        const botResponse = getBotResponse(userInput.toLowerCase(), lastBotMessage);
+        displayMessage(botResponse, "bot");
+    }
+
+    function getLastBotMessage() {
+        const chatBox = document.getElementById("chat-box");
+        const botMessages = chatBox.querySelectorAll(".bot-message");
+        if (botMessages.length > 0) {
+            return botMessages[botMessages.length - 1].textContent;
+        }
+        return "";
+    }
+
+    // Banco de dados do chatbot
+    const database = {
+        "capacitação": [
+            {
+                "initial": "A capacitação profissional é uma das melhores formas de garantir uma inserção digna no mercado de trabalho. Embora não ofereçamos cursos diretamente, podemos indicar cursos gratuitos em plataformas como Coursera, edX e Udemy. Você gostaria de saber mais sobre algum tema específico ou buscar cursos nessas plataformas?",
+                "followUp": "Você pode explorar cursos gratuitos nessas plataformas e também acessar nossa página de capacitação para conferir dicas, recursos e links úteis para o seu desenvolvimento profissional."
+            }
+        ],
+        "habilidades sociais": [
+            {
+                "initial": "As habilidades sociais são essenciais para interações eficazes no ambiente profissional e pessoal. Existem muitos recursos disponíveis online para o desenvolvimento dessas habilidades. Você gostaria de mais informações sobre como melhorar suas habilidades de comunicação ou trabalho em equipe?",
+                "followUp": "Recomendo procurar cursos e tutoriais sobre comunicação eficaz, resolução de conflitos e trabalho em equipe. Posso te ajudar a encontrar esses recursos."
+            }
+        ],
+        "apoio emocional": [
+            {
+                "initial": "O apoio emocional é essencial. Existem grupos de apoio online para pessoas com deficiência. Quer que eu te ajude a encontrar um?",
+                "followUp": "Algumas plataformas úteis incluem: Psicologia Viva, Zenklub e Vittude e também acesse a nossa página de apoio emocional para conferir dicas, recursos e links úteis."
+            }
+        ],
+        "acessibilidade": [
+            {
+                "initial": "A acessibilidade garante acesso igualitário a espaços e serviços. Posso te ajudar a verificar se um local ou produto é acessível?",
+                "followUp": "Procure rampas, elevadores, sinalização em braile, leitores de tela e acessos visuais e táteis. Quer ajuda para avaliar um lugar específico?"
+            }
+        ],
+        "empresas inclusivas": [
+            {
+                "initial": "Empresas inclusivas promovem um ambiente acessível e respeitoso. Podemos prosseguir?",
+                "followUp": "Empresas inclusivas integram diversas pessoas em todos os níveis, indo além de cotas. Isso traz inovação, melhora a reputação, atrai talentos, aumenta produtividade, compreende melhor o mercado e reduz conflitos. Construir essa cultura exige comprometimento da liderança, políticas inclusivas, acessibilidade, treinamento, comunicação aberta e monitoramento constante. Ser inclusivo não é só ético, mas torna a empresa mais inovadora, competitiva e socialmente responsável."
+            },
+            {
+                "initial": "Algumas empresas são exemplos de boas práticas em inclusão e acessibilidade digital. Gostaria de conhecer algumas?",
+                "followUp": "Empresas como Natura, Magazine Luiza e Johnson & Johnson implementam políticas de inclusão e acessibilidade digital."
+            }
+        ],
+        "direitos das pessoas com deficiência": [
+            {
+                "initial": "Quais direitos das pessoas com deficiência você gostaria de conhecer: saúde, educação, trabalho, transporte ou outros?",
+                "followUp": "No Brasil, a Constituição Federal e o Estatuto da Pessoa com Deficiência (Lei nº 13.146/2015) asseguram direitos para garantir igualdade e plena participação na sociedade. Os principais direitos incluem acessibilidade (ambientes, serviços, informação), educação inclusiva com adaptações, saúde adequada com tecnologia assistiva, igualdade de oportunidades no trabalho com adaptações, direitos previdenciários, participação em cultura, esporte e lazer acessíveis, e acesso à justiça com recursos de acessibilidade. A lei também estabelece a prioridade na efetivação de direitos à vida, saúde, sexualidade, alimentação, habitação, educação, trabalho, previdência, cultura, esporte, lazer, acessibilidade, mobilidade, moradia, convivência familiar e proteção contra negligência, discriminação, exploração, violência e opressão, visando promover inclusão, dignidade e autonomia."
+            }
+        ],
+        "tecnologia assistiva": [
+            {
+                "initial": "Tecnologia assistiva promove independência e inclusão. Tem interesse em algum tipo específico como leitores de tela ou próteses?",
+                "followUp": "Leitores de tela como NVDA, JAWS e VoiceOver são exemplos."
+            }
+        ],
+        "libras": [
+            {
+                "initial": "Libras é a Língua Brasileira de Sinais, essencial para a comunicação de pessoas surdas no Brasil. Você gostaria de saber mais sobre o aprendizado de Libras, recursos disponíveis ou sua importância?",
+                "followUp": "Existem diversos cursos online e presenciais para aprender Libras. Além disso, aplicativos e dicionários online podem ser úteis. Posso te indicar alguns recursos?"
+            },
+            {
+                "initial": "A acessibilidade em Libras é um direito! Quer saber mais sobre a legislação e a importância da presença de intérpretes?",
+                "followUp": "A Lei nº 10.436/2002 reconhece a Libras como meio legal de comunicação e expressão. A presença de intérpretes é fundamental em diversos contextos."
+            },
+            {
+                "initial": "Quer saber mais sobre cursos online ou presenciais de Libras?",
+                "followUp": "Plataformas como a Kultivi e o Senac oferecem cursos de Libras. Universidades e associações de surdos também costumam ter opções."
+            },
+            {
+                "initial": "Gostaria de conhecer aplicativos e dicionários online de Libras?",
+                "followUp": "Alguns aplicativos úteis são Hand Talk e SignAR. Dicionários online como o da LIBRAS.com.br podem ser muito úteis."
+            },
+            {
+                "initial": "Tem interesse em saber mais sobre a legislação que garante a acessibilidade em Libras?",
+                "followUp": "A Lei nº 10.436/2002 e o Decreto nº 5.626/2005 são importantes marcos legais que reconhecem e regulamentam a Libras."
+            }
+        ]
+    };
+
+    const palavrasChave = {
+        "capacitação": ["curso", "formação", "aprender", "capacitação", "mentoria"],
+        "habilidades sociais": ["habilidades sociais", "comunicação", "interação", "rede de contatos", "trabalho em equipe"],
+        "apoio emocional": ["emocional", "psicológico", "apoio", "sentimento", "terapia"],
+        "acessibilidade": ["acessível", "cadeira de rodas", "braile", "rampa", "sinalização"],
+        "empresas inclusivas": ["empresa", "colaborador", "inclusão", "diversidade", "ambiente inclusivo"],
+        "direitos das pessoas com deficiência": ["direito", "lei", "inclusão", "estatuto", "garantia"],
+        "tecnologia assistiva": ["tecnologia", "leitor de tela", "prótese", "comunicação alternativa", "órtese"],
+        "libras": ["libras", "língua de sinais", "surdos", "interpretação", "comunicação com surdos", "aprender libras", "curso de libras", "dicionário de libras", "acessibilidade em libras", "intérprete de libras", "legislação libras"]
+    };
+</script>
        <!-- Rodapé -->
        <footer>
         <div class="footer-content">
             <div class="footer-links">
                 <a href="index.html">Início</a>
                 <a href="index2.html">Sobre</a>
-                <a href="index3.html">Serviços</a>
+                <a href="index3.html.html">Serviços</a>
                 <a href="index4.html">Contato</a>
                 <a href="index5.html">Inscreva-se</a>
                 <a href="index6.html">Curiosidades</a>
