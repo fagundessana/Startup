@@ -542,7 +542,74 @@
         .hamburger.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -6px);
         }
+        /* Estilos do Rodapé */
+footer {
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 2.5rem 1.25rem;
+    border-top: 3px solid var(--accent);
+}
 
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: var(--text);
+    background-color: var(--card-bg);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: center;
+}
         /* Responsividade */
         @media (max-width: 62rem) {
             .hero-form h1 {
@@ -637,6 +704,14 @@
             .btn {
                 width: 100%;
             }
+           @media (max-width: 768px) {
+          .footer-links {
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+    }
+}
+
         }
     </style>
 </head>
@@ -665,7 +740,11 @@
 
     <!-- Cabeçalho com Logo -->
     <header>
-        <nav>
+            <nav aria-label="Navegação principal">
+                <a href="index.html" class="logo">
+                    <div class="logo-img">
+                        <img src="../img/LOGO.svg" alt="Logo InovaPCD"> <!-- Certifique-se que 'logo-inovapcd.png' está na mesma pasta -->
+                    </div>
                 <div class="logo-text">
                     <h1>InovaPCD</h1>
                     <span>Capacita, Inclui e Transforma</span>
@@ -944,22 +1023,29 @@
             </div>
         </div>
     </section>
-
    <!-- Rodapé -->
-       <!-- Rodapé -->
-       <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html"></a>
-                <a href="index2.html"></a>
-                <a href="index3.html.html"></a>
-                <a href="index4.html.html"></a>
-                <a href="#"></a>
-                <a href="#">Termos de Uso</a>
+<footer role="contentinfo">
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="index.html">Início</a>
+            <a href="index2.html">Sobre Nós</a>
+            <a href="index3.html">Serviços</a>
+            <a href="index4.html">Contato</a>
+            <a href="index5.html">Inscreva-se</a>
+            <a href="index6.html">Curiosidades</a>
+            <a href="termos.html">Termos de Uso</a>
+        </div>
+        <div class="footer-info">
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
             <p class="copyright">© 2025 InovaPCD. Todos os direitos reservados.</p>
         </div>
-    </footer>
+    </div>
+</footer>
     
 </body>
 </html>
